@@ -1,7 +1,7 @@
 import Orderitem from "../OrderItems/Orderitem";
 import "./shoppingcart.css";
 import { useSelector } from "react-redux";
-import { selectAllShoppingCart} from "./shoppingSlice.js";
+import { selectAllShoppingCart} from "../../store/slice/shoppingSlice.js";
 
 const ShoppingCart = () => {
     const shoppingCart = useSelector(selectAllShoppingCart);
