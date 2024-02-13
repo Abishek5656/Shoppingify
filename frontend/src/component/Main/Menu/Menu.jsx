@@ -2,7 +2,8 @@ import "./menu.css";
 import ListItems from "../ListItems/ListItems.jsx";
 import { BASE_URL } from "../../../constant/data.js";
 import { useDispatch, useSelector } from "react-redux";
-import { addItemToMenu, selectAllmenu } from "./menuSlice.js";
+// import { addItemToMenu, selectAllmenu } from "./menuSlice.js";
+import { addItemToMenu, selectAllmenu} from "../../../store/slice/menuSlice.js";
 import { IoSearchOutline } from "react-icons/io5";
 import { useEffect } from "react";
 
@@ -14,6 +15,7 @@ const Menu = () => {
         const fetchAllProducts = async () => {
             const res = await fetch(`${BASE_URL}/product/menu`);
             const data = await res.json();  
+            
             dispatch(addItemToMenu(data.data));
 
         };
