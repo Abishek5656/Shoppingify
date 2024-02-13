@@ -1,0 +1,87 @@
+.listmanager_container {
+    display: none;
+}
+
+.listmanager_image-container {
+    display: flex;
+    justify-content: center;
+    border: 1px solid #ff0000;
+    border-radius: 12px;
+    height: 125px;
+    margin: 2rem 1rem;
+    background-color: #80485b;
+}
+
+.listmanager_image-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+
+.listmanager_image-content p {
+    font-family: "Quicksand";
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #ffffff;
+}
+
+.listmanager_image-content button {
+    color: black;
+    outline: none;
+    background-color: #ffffff;
+    padding: 0.5rem 0.75rem;
+    max-width: 100px;
+    border-radius: 10px;
+}
+
+.shopping_heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 1rem;
+}
+
+.shoppingcart_title {
+    font-family: "Quicksand";
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 30px;
+    color: #34333a;
+    margin: 1.5rem 0;
+}
+
+.saveOrder {
+    height: 200px;
+    background-color: #ffffff;
+    width: 100%;
+    border: 1px solid red;
+}
+
+.inputContainer {
+}
+
+@media only screen and (min-width: 640px) {
+}
+
+@media only screen and (min-width: 768px) {
+}
+
+@media only screen and (min-width: 1024px) {
+    .listmanager_container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: #fff0de;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+ 
+}
+
+@media only screen and (min-width: 1536px) {
+}

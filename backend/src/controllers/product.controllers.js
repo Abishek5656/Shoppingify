@@ -1,0 +1,96 @@
+import mongoose from "mongoose";
+import { Product } from "../models/product.model.js";
+import { Category } from "../models/category.model.js";
+import { ApiError } from "../utils/ApiError.js";
+import { ApiResponse } from "../utils/ApiResponse.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
+
+export const CreateProduct = asyncHandler(async (req, res) => {
+  const { name, url, note, categoryName } = req.body;
+
+  // Check if any of the required fields are empty or contain only whitespace
+  if ([name, url, note, categoryName].some((field) => field?.trim() === "")) {
+    throw new ApiError(400, "All fields are required");
+  }
+
+  // Check if the category already exists
+  const existingCategory = await Category.findOne({ categoryName });
+
+  let newCategory;
+
+  if (!existingCategory || existingCategory.length === 0) {
+    // If the category does not exist, create a new one
+    newCategory = await Category.create({
+      categoryName,
+    });
+
+    if (!newCategory || newCategory.length === 0) {
+      throw new ApiError(
+        400,
+        "Something went wrong while creating the category"
+      );
+    }
+  }
+
+  // Continue with the product creation logic here
+
+  const product = await Product.create({
+    name,
+    url,
+    note,
+    categoryName: existingCategory?.categoryName || newCategory?.categoryName,
+    categoryId: existingCategory?._id || newCategory?._id,
+  });
+
+  if (!product) {
+    throw new ApiError(400, "something went wrong");
+  }
+
+  return res
+    .status(201)
+    .json(new ApiResponse(201, product, "Product created successfully"));
+});
+
+export const allProducts = asyncHandler(async (req, res) => {
+
+  const productslist = await Product.aggregate([
+    {
+      $group: {
+        _id: "$categoryName",
+        productList: {
+          $push: {
+            item_id: "$_id",
+            item_name: "$name",
+            item_url: "$url",
+            item_note: "$note",
+            item_category: "$categoryName",
+            item_categoryId: "$categoryId",
+            item_quantity: "$quantity",
+          },
+        },
+      },
+    },
+    { $project: { categoryName: 1, categoryId: 1, productList: 1 } },
+    { $sort: { _id: 1 } },
+  ]);
+
+  if (!productslist || productslist.length === 0) {
+    throw new ApiError(400, "something went wrong");
+  }
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, productslist, "products list"));
+});
+
+export const allCategoryList = asyncHandler(async (req, res) => {
+  const category = await Category.find({}, { _id: 1, categoryName: 1 }).sort({
+    categoryName: 1,
+  });
+
+  if (!category) {
+    throw new ApiError(400, "No Category Found");
+  }
+
+  return res.status(200).json(new ApiResponse(200, category, "Category Found"));
+});
