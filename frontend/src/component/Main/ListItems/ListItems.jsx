@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { IoIosAdd } from "react-icons/io";
 import "./listitems.css";
 
-import { addItemToCart } from "../../shoppingChart/shoppingSlice";
+import { addItemToCart } from "../../../store/slice/shoppingSlice.js";
 import { useDispatch } from "react-redux";
 
 const ListItems = ({ items }) => {

@@ -7,7 +7,8 @@ import {
     incrementItem,
     decrementItem,
     removeItemFromCart,
-} from "../shoppingChart/shoppingSlice";
+} from "../../store/slice/shoppingSlice.js";
+
 import { useDispatch } from "react-redux";
 
 const Orderitem = ({ productData }) => {
