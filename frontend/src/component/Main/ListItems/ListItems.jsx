@@ -22,6 +22,7 @@ const ListItems = ({ items }) => {
                         size={22}
                         color="#C1C1C4"
                         onClick={() => handleAddToCart(item)}
+                        style={{cursor:"pointer"}}
                     />
                 </div>
             ))}
