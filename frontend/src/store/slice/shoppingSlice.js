@@ -85,6 +85,9 @@ const shoppingCartSlice = createSlice({
                 );
             }
         },
+        emptyItemList(state,action) {
+            return []
+        }
     },
 });
 
@@ -95,6 +98,7 @@ export const {
     removeItemFromCart,
     incrementItem,
     decrementItem,
+    emptyItemList
 } = shoppingCartSlice.actions;
 
 export default shoppingCartSlice.reducer;

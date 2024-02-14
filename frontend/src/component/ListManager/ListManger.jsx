@@ -4,22 +4,31 @@ import ShoppingCart from "../shoppingChart/ShoppingCart";
 import { MdEdit } from "react-icons/md";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { selectAllShoppingCart } from "../../store/slice/shoppingSlice";
+import { useDispatch } from "react-redux";
+import {emptyItemList} from "../../store/slice/shoppingSlice.js";
 
 const ListManger = ({ openForm, setOpenForm }) => {
+
+    const dispatch = useDispatch();
+
     const [name, setName] = useState("");
     const [save, setSave] = useState(false);
     const [completed, setCompleted] = useState(false);
 
     const handleSubmit = () => {
+        console.log("complete");
         console.log("selectAllShoppingCart");
-        console.log(selectAllShoppingCart);
+       
     };
 
     const handleSave = () => {
         setCompleted(true);
         setSave(true);
     };
+
+    const handleClear = () => {
+        dispatch(emptyItemList())
+    }
 
     return (
         <div className="listmanager_container">
@@ -44,7 +53,7 @@ const ListManger = ({ openForm, setOpenForm }) => {
                 <div className={save ? "" : "div"}>
                     {save ? (
                         <div className="div2">
-                            <button className="cancel_btn">Cancel</button>
+                            <button className="cancel_btn" onClick={handleClear}>Cancel</button>
                             <button
                                 className="complete_btn"
                                 onClick={handleSubmit}
