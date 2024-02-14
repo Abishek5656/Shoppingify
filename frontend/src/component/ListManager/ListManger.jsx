@@ -9,18 +9,17 @@ import { selectAllShoppingCart } from "../../store/slice/shoppingSlice";
 const ListManger = ({ openForm, setOpenForm }) => {
     const [name, setName] = useState("");
     const [save, setSave] = useState(false);
-    const [completed, setCompleted] = useState(false)
+    const [completed, setCompleted] = useState(false);
 
     const handleSubmit = () => {
         console.log("selectAllShoppingCart");
         console.log(selectAllShoppingCart);
     };
 
-
     const handleSave = () => {
         setCompleted(true);
-        setSave(true)
-    }
+        setSave(true);
+    };
 
     return (
         <div className="listmanager_container">
@@ -42,15 +41,17 @@ const ListManger = ({ openForm, setOpenForm }) => {
             <ShoppingCart />
 
             <div className="saveOrder">
-            <div className={save ? "" : "div"}>
-
+                <div className={save ? "" : "div"}>
                     {save ? (
-                        <div2>
+                        <div className="div2">
                             <button className="cancel_btn">Cancel</button>
-                            <button className="complete_btn" onClick={handleSubmit}>
+                            <button
+                                className="complete_btn"
+                                onClick={handleSubmit}
+                            >
                                 Complete
                             </button>
-                        </div2>
+                        </div>
                     ) : (
                         <>
                             <input
