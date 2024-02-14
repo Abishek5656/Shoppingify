@@ -3,13 +3,10 @@ import bottle from "../../assets/source.svg";
 import ShoppingCart from "../shoppingChart/ShoppingCart";
 import { MdEdit } from "react-icons/md";
 import PropTypes from "prop-types";
-
+import { useState } from "react";
 
 const ListManger = ({ openForm, setOpenForm }) => {
-
-
-    const [name, setName] = useState("")
-    
+    const [name, setName] = useState("");
 
     return (
         <div className="listmanager_container">
@@ -25,16 +22,21 @@ const ListManger = ({ openForm, setOpenForm }) => {
             </div>
             <div className="shopping_heading">
                 <h3 className="shoppingcart_title">Shopping list</h3>
-                <MdEdit size={25} />
             </div>
 
             <ShoppingCart />
 
             <div className="saveOrder">
-                  <div className="div">
-                      <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter a name" className="inputContainer"/>
-                      <button className="save_btn">Save</button>
-                  </div>
+                <div className="div">
+                    <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Enter a name"
+                        className="inputContainer"
+                    />
+                    <button className="save_btn">Save</button>
+                </div>
             </div>
         </div>
     );
