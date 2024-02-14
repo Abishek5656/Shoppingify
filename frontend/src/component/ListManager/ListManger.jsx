@@ -7,6 +7,7 @@ import { useState } from "react";
 
 const ListManger = ({ openForm, setOpenForm }) => {
     const [name, setName] = useState("");
+    const [save,setSave] = useState(false)
 
     return (
         <div className="listmanager_container">
@@ -21,7 +22,8 @@ const ListManger = ({ openForm, setOpenForm }) => {
                 </div>
             </div>
             <div className="shopping_heading">
-                <h3 className="shoppingcart_title">Shopping list</h3>
+                <h3 className="shoppingcart_title">{name ? name : "Shopping list"}</h3>
+                <MdEdit size={25} />
             </div>
 
             <ShoppingCart />
@@ -35,7 +37,16 @@ const ListManger = ({ openForm, setOpenForm }) => {
                         placeholder="Enter a name"
                         className="inputContainer"
                     />
-                    <button className="save_btn">Save</button>
+                 
+                    {
+                     save ? (
+                        <button className="save_btn"onClick={() => setSave(!save)}>Complete</button> 
+                     ) : (
+        
+                        <button className="save_btn" onClick={() => setSave(!save)}>Save</button>
+                       
+                     )
+                    }
                 </div>
             </div>
         </div>
