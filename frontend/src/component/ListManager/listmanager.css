@@ -61,32 +61,44 @@
     z-index: 100;
     height: 100px;
     background-color: #ffffff;
-   width: 100%;
-    border: 1px solid #FFFFFF;
+    width: 100%;
+    border: 1px solid #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.div { 
+.div {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid #F9A109;
+    border: 1px solid #f9a109;
     width: 300px;
-    height: 50px; 
+    height: 50px;
     border-radius: 9px;
 }
 .inputContainer {
-    padding:0 0.75rem;
+    padding: 0 0.75rem;
+}
+
+.noItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Quicksand";
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25px;
+    text-align: center;
+    color: #34333a;
 }
 
 .save_btn {
-    background-color: #F9A109;
+    background-color: #f9a109;
     height: 100%;
     width: 150px;
-    border-top-right-radius:9px;
-    border-bottom-right-radius:9px;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
     cursor: pointer;
 }
 
