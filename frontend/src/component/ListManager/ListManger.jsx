@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 const ListManger = ({ openForm, setOpenForm }) => {
 
 
-    const [name. setName] = useState("")
+    const [name, setName] = useState("")
     
 
     return (
