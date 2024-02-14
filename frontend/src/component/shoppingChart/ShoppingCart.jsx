@@ -20,6 +20,8 @@ const ShoppingCart = () => {
                 </div>
             ))}
     
+
+   
         </div>
     );
 };

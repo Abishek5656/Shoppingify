@@ -6,6 +6,9 @@ import PropTypes from "prop-types";
 
 
 const ListManger = ({ openForm, setOpenForm }) => {
+
+
+    const [name. setName] = useState("")
     
 
     return (
@@ -26,6 +29,13 @@ const ListManger = ({ openForm, setOpenForm }) => {
             </div>
 
             <ShoppingCart />
+
+            <div className="saveOrder">
+                  <div className="div">
+                      <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter a name" className="inputContainer"/>
+                      <button className="save_btn">Save</button>
+                  </div>
+            </div>
         </div>
     );
 };

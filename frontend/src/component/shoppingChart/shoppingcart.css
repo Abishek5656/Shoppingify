@@ -21,11 +21,12 @@
 @media only screen and (min-width: 1024px) {
     .shoppingcart_container {
         padding: 0.5rem 1rem;
+        margin-bottom: 3rem;
     }
 }
 
 @media only screen and (min-width: 1280px) {
     .shoppingcart_container {
-        padding: 0.75rem 1rem;
+        padding: 0.75rem 1rem 3rem
     }
 }
