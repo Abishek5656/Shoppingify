@@ -8,7 +8,7 @@ const ShoppingCart = () => {
     return (
         <div className="shoppingcart_container">
             {shoppingCart && shoppingCart.length === 0 ? (
-                 // If shoppingCart exists and is empty
+                // If shoppingCart exists and is empty
                 <p className="noItem">No items</p>
             ) : (
                 // If shoppingCart exists and is not empty

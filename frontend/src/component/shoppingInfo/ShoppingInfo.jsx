@@ -8,9 +8,9 @@ const ShoppingInfo = () => {
     return (
         <div className="shoppinginfo">
             {openForm ? (
-                <AddItems setOpenForm={setOpenForm} openForm={openForm}/>
+                <AddItems setOpenForm={setOpenForm} openForm={openForm} />
             ) : (
-                <ListManager setOpenForm={setOpenForm} openForm={openForm}/>
+                <ListManager setOpenForm={setOpenForm} openForm={openForm} />
             )}
         </div>
     );

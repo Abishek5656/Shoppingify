@@ -1,8 +1,7 @@
 import "./commonchart.css";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const CommonChart = ({ data, name }) => {
-
     return (
         <div className="common_container">
             <h4 className="common_title">{name}</h4>
@@ -17,7 +16,10 @@ const CommonChart = ({ data, name }) => {
                             </p>
                         </div>
                         <div className="outermostDiv">
-                            <div className="innermostdiv" style={{width:"50px"}}></div>
+                            <div
+                                className="innermostdiv"
+                                style={{ width: "50px" }}
+                            ></div>
                         </div>
                     </div>
                 </div>
@@ -26,9 +28,8 @@ const CommonChart = ({ data, name }) => {
     );
 };
 
-
-CommonChart.propTypes = { 
+CommonChart.propTypes = {
     name: PropTypes.string,
-    data:PropTypes.array,
-}
+    data: PropTypes.array,
+};
 export default CommonChart;

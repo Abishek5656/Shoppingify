@@ -31,12 +31,9 @@ const Orderitem = ({ productData }) => {
             {productData &&
                 productData.orderList.map((order) => (
                     <div key={order.item_id} className="order_items-container">
-
-
                         <p className="order_item-name">{order.item_name}</p>
 
                         <div className="order_item-quantity">
-
                             <div className="deleteBtn">
                                 <MdDeleteOutline
                                     size={18}
@@ -47,25 +44,24 @@ const Orderitem = ({ productData }) => {
 
                             <div className="buttons_container">
                                 <FaMinus
-                                   size={24}
+                                    size={24}
                                     color={"#f9a109"}
                                     onClick={() => handleDecrement(order)}
                                 />
                                 <div className="quantity_container">
-
-                                <p> <span>{order.item_quantity}</span> pcs</p>
+                                    <p>
+                                        {" "}
+                                        <span>{order.item_quantity}</span> pcs
+                                    </p>
                                 </div>
-                               
+
                                 <FaPlus
                                     color={"#f9a109"}
                                     size={24}
                                     onClick={() => handleIncrement(order)}
                                 />
                             </div>
-
                         </div>
-
-
                     </div>
                 ))}
         </>

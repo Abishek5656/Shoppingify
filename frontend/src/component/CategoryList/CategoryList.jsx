@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 const CategoryList = ({
     setCategoryModel,
     setProductDetails,
-    productDetails
+    productDetails,
 }) => {
     const [categoreylist, setCategorylist] = useState([]);
 
@@ -27,34 +27,31 @@ const CategoryList = ({
     }, []);
 
     const handleSelected = (id, value) => {
-        setProductDetails({...productDetails, categoryName: value});
+        setProductDetails({ ...productDetails, categoryName: value });
         setCategoryModel(false);
     };
     return (
         <div className="categorylist_container">
-
             {categoreylist?.map((category) => {
                 const { _id, categoryName } = category;
                 return (
                     <div
                         key={_id}
-                        
-                        onClick={() => handleSelected( _id, categoryName)}
+                        onClick={() => handleSelected(_id, categoryName)}
                         className="categorylist_name"
                     >
                         {categoryName}
                     </div>
                 );
             })}
-
         </div>
     );
 };
 
 CategoryList.propTypes = {
     setProductDetails: PropTypes.func.isRequired,
-    setCategoryModel:PropTypes.func.isRequired,
-    productDetails:PropTypes.object
+    setCategoryModel: PropTypes.func.isRequired,
+    productDetails: PropTypes.object,
 };
 
 export default CategoryList;

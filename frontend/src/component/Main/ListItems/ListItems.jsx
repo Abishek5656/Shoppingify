@@ -6,11 +6,10 @@ import { addItemToCart } from "../../../store/slice/shoppingSlice.js";
 import { useDispatch } from "react-redux";
 
 const ListItems = ({ items }) => {
-
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const handleAddToCart = async (item) => {
-     dispatch(addItemToCart(item));
+        dispatch(addItemToCart(item));
     };
 
     return (
@@ -22,7 +21,7 @@ const ListItems = ({ items }) => {
                         size={22}
                         color="#C1C1C4"
                         onClick={() => handleAddToCart(item)}
-                        style={{cursor:"pointer"}}
+                        style={{ cursor: "pointer" }}
                     />
                 </div>
             ))}

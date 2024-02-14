@@ -2,10 +2,12 @@ import "./menu.css";
 import ListItems from "../ListItems/ListItems.jsx";
 import { BASE_URL } from "../../../constant/data.js";
 import { useDispatch, useSelector } from "react-redux";
-import { addItemToMenu, selectAllmenu} from "../../../store/slice/menuSlice.js";
+import {
+    addItemToMenu,
+    selectAllmenu,
+} from "../../../store/slice/menuSlice.js";
 import { IoSearchOutline } from "react-icons/io5";
 import { useEffect } from "react";
-
 
 const Menu = () => {
     const dispatch = useDispatch();
@@ -13,13 +15,12 @@ const Menu = () => {
     useEffect(() => {
         const fetchAllProducts = async () => {
             const res = await fetch(`${BASE_URL}/product/menu`);
-            const data = await res.json();  
-            
-            dispatch(addItemToMenu(data.data));
+            const data = await res.json();
 
+            dispatch(addItemToMenu(data.data));
         };
         fetchAllProducts();
-    },[dispatch]);
+    }, [dispatch]);
 
     return (
         <div className="main_container">
@@ -34,16 +35,14 @@ const Menu = () => {
                 </div>
             </div>
             <div className="product_container">
-        
-            
-            {menu[0]?.map((products) => (
+                {menu[0]?.map((products) => (
                     <div key={products.productList[0].item_categoryId}>
                         <h2 className="product_category--name">
                             {products._id}
                         </h2>
                         <ListItems items={products} />
                     </div>
-                ))} 
+                ))}
             </div>
         </div>
     );

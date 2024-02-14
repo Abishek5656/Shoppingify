@@ -1,6 +1,6 @@
 import "./additems.css";
 
-import {  useState } from "react";
+import { useState } from "react";
 import CategoryList from "../CategoryList/CategoryList";
 import { BASE_URL } from "../../constant/data";
 import PropTypes from "prop-types";
@@ -10,27 +10,23 @@ const AddItems = ({ openForm, setOpenForm }) => {
 
     const [productDetails, setProductDetails] = useState({});
 
-   
     const saveProduct = async () => {
         try {
-            const res = await fetch(
-                `${BASE_URL}/product/create`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(productDetails),
-                }
-            );
+            const res = await fetch(`${BASE_URL}/product/create`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(productDetails),
+            });
             const data = await res.json();
             console.log(data);
         } catch (error) {
             console.log(error);
         }
 
-        setProductDetails({})
-        setOpenForm(!openForm)
+        setProductDetails({});
+        setOpenForm(!openForm);
     };
     // Call the function to trigger the side effect
 
@@ -103,11 +99,10 @@ const AddItems = ({ openForm, setOpenForm }) => {
             </form>
             {categoryModel ? (
                 <CategoryList
-                setProductDetails={setProductDetails}
-                productDetails={productDetails}
+                    setProductDetails={setProductDetails}
+                    productDetails={productDetails}
                     categoryModel={categoryModel}
                     setCategoryModel={setCategoryModel}
-
                 />
             ) : (
                 ""
