@@ -102,6 +102,23 @@
     cursor: pointer;
 }
 
+.cancel_btn {
+}
+
+.complete_btn {
+    background-color: #56ccf2;
+    font-family: "Quicksand";
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #ffffff;
+}
+
+.div2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 @media only screen and (min-width: 640px) {
 }
 
