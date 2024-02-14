@@ -4,10 +4,16 @@ import ShoppingCart from "../shoppingChart/ShoppingCart";
 import { MdEdit } from "react-icons/md";
 import PropTypes from "prop-types";
 import { useState } from "react";
+import { selectAllShoppingCart } from "../../store/slice/shoppingSlice";
 
 const ListManger = ({ openForm, setOpenForm }) => {
     const [name, setName] = useState("");
-    const [save,setSave] = useState(false)
+    const [save, setSave] = useState(false);
+
+    const handleSubmit = () => {
+        console.log("selectAllShoppingCart");
+        console.log(selectAllShoppingCart);
+    };
 
     return (
         <div className="listmanager_container">
@@ -22,7 +28,7 @@ const ListManger = ({ openForm, setOpenForm }) => {
                 </div>
             </div>
             <div className="shopping_heading">
-                <h3 className="shoppingcart_title">{name ? name : "Shopping list"}</h3>
+                <h3 className="shoppingcart_title">Shopping list</h3>
                 <MdEdit size={25} />
             </div>
 
@@ -30,23 +36,28 @@ const ListManger = ({ openForm, setOpenForm }) => {
 
             <div className="saveOrder">
                 <div className="div">
-                    <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="Enter a name"
-                        className="inputContainer"
-                    />
-                 
-                    {
-                     save ? (
-                        <button className="save_btn"onClick={() => setSave(!save)}>Complete</button> 
-                     ) : (
-        
-                        <button className="save_btn" onClick={() => setSave(!save)}>Save</button>
-                       
-                     )
-                    }
+                    {save ? (
+                        <button className="save_btn" onClick={handleSubmit}>
+                            Complete
+                        </button>
+                    ) : (
+                        <>
+                            <input
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                placeholder="Enter a name"
+                                className="inputContainer"
+                            />
+                            <button
+                                className="save_btn"
+                                disabled={!name}
+                                onClick={() => setSave(!save)}
+                            >
+                                Save
+                            </button>
+                        </>
+                    )}
                 </div>
             </div>
         </div>
