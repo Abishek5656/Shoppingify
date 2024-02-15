@@ -15,10 +15,10 @@ app.use(express.static("public"));
 
 //routes import
 import productRouter from "./routes/product.route.js";
-// import orderRouter from "./routes/order.route.js";
+import orderRouter from "./routes/order.route.js";
 
 //routes declaration
 app.use("/api/v1/product", productRouter);
-// app.use("/api/v1/orders", orderRouter)
+app.use("/api/v1/orders", orderRouter)
 
 export { app };

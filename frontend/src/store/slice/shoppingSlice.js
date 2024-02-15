@@ -1,15 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { BASE_URL } from "../../constant/data.js";
 
-import { createAsyncThunk } from '@reduxjs/toolkit'
+
+export const submitShoppingCart = createAsyncThunk(
+    "shoppingCart/orderDetails",
+    async (orderDetails, thunkAPI) => {
+        console.log(orderDetails); // This will log the payload passed to the action
+        // You can access state with `thunkAPI.getState()`
+        const state = thunkAPI.getState();
+        console.log(state.shoppingCart);
+        // Here you can perform your async logic, like fetching data from a server
+        await fetch(`${BASE_URL}`)
+    }
+);
 
 const initialState = {
     shoppingCart: [],
+    loading: false,
+    error: null,
 };
-
-export const orderlist = createAsyncThunk("shoppingCart/oderDetails", async (state) => {
-    const { shoppingCart } = state;
-    console.log(shoppingCart);
-});
 
 const shoppingCartSlice = createSlice({
     name: "shoppingCart",
@@ -92,11 +102,24 @@ const shoppingCartSlice = createSlice({
                 );
             }
         },
-        emptyItemList(state,action) {
-            return []
-        }
+        emptyItemList(state) {
+            state.shoppingCart = [];
+        },
     },
-
+    extraReducers: (builder) => {
+        builder
+            .addCase(submitShoppingCart.pending, (state, action) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(submitShoppingCart.fulfilled, (state, action) => {
+                state.loading = false;
+            })
+            .addCase(submitShoppingCart.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message;
+            });
+    },
 });
 
 export const selectAllShoppingCart = (state) => state.shoppingCart.shoppingCart;
@@ -106,7 +129,7 @@ export const {
     removeItemFromCart,
     incrementItem,
     decrementItem,
-    emptyItemList
+    emptyItemList,
 } = shoppingCartSlice.actions;
 
 export default shoppingCartSlice.reducer;
