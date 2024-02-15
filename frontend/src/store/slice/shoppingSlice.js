@@ -1,8 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { createAsyncThunk } from '@reduxjs/toolkit'
+
 const initialState = {
     shoppingCart: [],
 };
+
+export const orderlist = createAsyncThunk("shoppingCart/oderDetails", async (state) => {
+    const { shoppingCart } = state;
+    console.log(shoppingCart);
+});
 
 const shoppingCartSlice = createSlice({
     name: "shoppingCart",
@@ -89,6 +96,7 @@ const shoppingCartSlice = createSlice({
             return []
         }
     },
+
 });
 
 export const selectAllShoppingCart = (state) => state.shoppingCart.shoppingCart;

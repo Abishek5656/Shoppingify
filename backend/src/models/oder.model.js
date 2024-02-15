@@ -1,25 +1,49 @@
-import mongoose, { Schema } from "mongoose";
+// import mongoose, { Schema } from "mongoose";
+
+// const orderSchema = new Schema(
+//   {
+//       name: {
+//         typeo:String
+//       },
+//       Date: {
+//         type: Date
+//       },
+//       orderList:[
+
+//       ]
+//   },
+//   {
+//     timestamps: true,
+//   }
+// );
+
+// export const Order = mongoose.model("Order", orderSchema);
+
+import mongoose from "mongoose";
+
+const { Schema } = mongoose;
 
 const orderSchema = new Schema(
   {
-    name: {
+    userName: {
       type: String,
+      required: true
     },
-    itemId: {
-      type: Schema.Types.ObjectId,
-      ref: "Product",
+    orderDate: {
+      type: Date,
+      default: Date.now
     },
-    categoryName: {
-      type: String,
-    },
-    categoryId: {
-      type: Schema.Types.ObjectId,
-      ref: "Category",
-    },
+    orderList: {
+      type: Array,
+      default: []
+    }
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 );
 
-export const Order = mongoose.model("Order", orderSchema);
+const Order = mongoose.model("Order", orderSchema);
+
+export default Order;
+

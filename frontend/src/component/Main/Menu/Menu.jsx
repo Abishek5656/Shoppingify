@@ -22,7 +22,7 @@ const Menu = () => {
             dispatch(addItemToMenu(data.data));
         };
         fetchAllProducts();
-    }, [dispatch, menu]);
+    }, [dispatch]);
 
     return (
         <div className="main_container">
