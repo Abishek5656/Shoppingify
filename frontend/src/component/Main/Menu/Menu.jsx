@@ -11,7 +11,9 @@ import { useEffect } from "react";
 
 const Menu = () => {
     const dispatch = useDispatch();
+
     const menu = useSelector(selectAllmenu);
+
     useEffect(() => {
         const fetchAllProducts = async () => {
             const res = await fetch(`${BASE_URL}/product/menu`);
@@ -20,7 +22,7 @@ const Menu = () => {
             dispatch(addItemToMenu(data.data));
         };
         fetchAllProducts();
-    }, [dispatch]);
+    }, [dispatch, menu]);
 
     return (
         <div className="main_container">
