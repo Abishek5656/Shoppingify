@@ -17,7 +17,7 @@ const ListManger = ({ openForm, setOpenForm }) => {
 
     const handleSubmit = () => {
         console.log("complete");
-        console.log("selectAllShoppingCart");
+       
        
     };
 
