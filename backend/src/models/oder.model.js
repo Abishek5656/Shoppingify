@@ -25,7 +25,7 @@ const { Schema } = mongoose;
 
 const orderSchema = new Schema(
   {
-    userName: {
+    name: {
       type: String,
       required: true
     },
