@@ -2,6 +2,7 @@ import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { Order } from "../models/oder.model.js";
+import { Sales } from "../models/sales.model.js";
 
 export const orderProduct = asyncHandler(async (req, res) => {
   const { name, shoppingCart } = req.body;
@@ -9,7 +10,6 @@ export const orderProduct = asyncHandler(async (req, res) => {
   if (!name || !shoppingCart) {
     throw new  ApiError(400, "All fields ar required");
   }
-
   const order = await Order.create({
     name,
     orderList:shoppingCart,

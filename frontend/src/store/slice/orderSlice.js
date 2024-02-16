@@ -2,12 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { BASE_URL } from "../../constant/data";
 
-
 const initialState = {
-      orderItem: [],
-      name:"abi",
-      loading: false,
-      error: null,
+    orderItem: [],
+    name: "abi",
 };
 
 export const submitShoppingCart = createAsyncThunk(
@@ -24,7 +21,7 @@ export const submitShoppingCart = createAsyncThunk(
                 },
                 body: JSON.stringify({
                     shoppingCart: state.order.orderItem,
-                    name:"shilpi",
+                    name: "shilpi",
                 }),
             });
 
@@ -42,62 +39,66 @@ export const submitShoppingCart = createAsyncThunk(
 );
 
 const orderSlice = createSlice({
-      name: "order",
-      initialState,
-      reducers: {
-            addtoCart: (state, action) => {
-              const { item_id, item_name, item_category, item_categoryId } = action.payload;
-              let order = {
+    name: "order",
+    initialState,
+    reducers: {
+        addtoCart: (state, action) => {
+            const { item_id, item_name, item_category, item_categoryId } =
+                action.payload;
+            let order = {
                 item_id,
                 item_name,
                 item_category,
                 item_categoryId,
                 item_quantity: 1,
-              };
-              state.orderItem.push(order);
-            },
-            incrementCount: (state, action) => {
-              const { item_id } = action.payload;
-              const item = state.orderItem.find(item => item.item_id === item_id);
-              if (item) {
+            };
+            state.orderItem.push(order);
+        },
+        incrementCount: (state, action) => {
+            const { item_id } = action.payload;
+            const item = state.orderItem.find(
+                (item) => item.item_id === item_id
+            );
+            if (item) {
                 item.item_quantity++;
-              }
-            },
-            decrementCount: (state, action) => {
-              const { item_id } = action.payload;
-              const item = state.orderItem.find(item => item.item_id === item_id);
-              if (item && item.item_quantity > 0) {
+            }
+        },
+        decrementCount: (state, action) => {
+            const { item_id } = action.payload;
+            const item = state.orderItem.find(
+                (item) => item.item_id === item_id
+            );
+            if (item && item.item_quantity > 0) {
                 item.item_quantity--;
-              }
-            },
-            removeitem: (state, action) => {
-                  const { item_id } = action.payload;
-                  const items = state.orderItem.filter(item => item.item_id !== item_id);
-                  state.orderItem = items;
-            },
-            emptyItem(state) {
-              state.orderItem = [];
-          },
-          },
-           extraReducers: (builder) => {
-        builder
-            .addCase(submitShoppingCart.pending, (state, action) => {
-                state.loading = true;
-                state.error = null;
-            })
-            .addCase(submitShoppingCart.fulfilled, (state, action) => {
-                 state.loading = false;
-            })
-            .addCase(submitShoppingCart.rejected, (state, action) => {
-                state.loading = false;
-                state.error = action.error.message;
-            });
+            }
+        },
+        removeitem: (state, action) => {
+            const { item_id } = action.payload;
+            const items = state.orderItem.filter(
+                (item) => item.item_id !== item_id
+            );
+            state.orderItem = items;
+        },
+        emptyItem(state) {
+            state.orderItem = [];
+        },
     },
-          
+    extraReducers: (builder) => {
+        builder
+            .addCase(submitShoppingCart.pending, (state, action) => {})
+            .addCase(submitShoppingCart.fulfilled, (state, action) => {})
+            .addCase(submitShoppingCart.rejected, (state, action) => {});
+    },
 });
 
 export const selectAllOrders = (state) => state.order;
 
-export const { addtoCart, incrementCount, decrementCount,removeitem, emptyItem } = orderSlice.actions;
+export const {
+    addtoCart,
+    incrementCount,
+    decrementCount,
+    removeitem,
+    emptyItem,
+} = orderSlice.actions;
 
 export default orderSlice.reducer;
