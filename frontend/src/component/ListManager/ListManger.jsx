@@ -18,6 +18,7 @@ const ListManger = ({ openForm, setOpenForm }) => {
 
     const handleSubmit = () => {
         dispatch(submitShoppingCart(name));
+        dispatch(emptyItemList());
         toast.success("Order Placed");
     };
 
