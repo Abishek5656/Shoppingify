@@ -4,20 +4,20 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { Order } from "../models/oder.model.js";
 
 export const orderProduct = asyncHandler(async (req, res) => {
-  const { name, orderList } = req.body;
+  const { name, shoppingCart } = req.body;
 
-  if (!name || !orderList) {
+  if (!name || !shoppingCart) {
     throw new  ApiError(400, "All fields ar required");
   }
 
 
-  console.log("orderList")
-  console.log(orderList)
+  console.log("shoppingCart")
+  console.log(shoppingCart)
 
 
   const order = await Order.create({
     name,
-    orderList,
+    orderList:shoppingCart,
   });
 
   console.log("order")

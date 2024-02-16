@@ -2,18 +2,39 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { BASE_URL } from "../../constant/data.js";
 
-
 export const submitShoppingCart = createAsyncThunk(
     "shoppingCart/orderDetails",
     async (orderDetails, thunkAPI) => {
-        console.log(orderDetails); // This will log the payload passed to the action
-        // You can access state with `thunkAPI.getState()`
         const state = thunkAPI.getState();
-        console.log(state.shoppingCart);
-        // Here you can perform your async logic, like fetching data from a server
-        await fetch(`${BASE_URL}`)
+        console.log("state.shoppingCart.shoppingCart");
+        console.log(state.shoppingCart.shoppingCart);
+
+        try {
+            
+            const response = await fetch(`${BASE_URL}/orders/create-order`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json" 
+                },
+                body: JSON.stringify({ shoppingCart: state.shoppingCart.shoppingCart, name:"shilpi" }) // Convert your body object to a JSON string
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to submit shopping cart');
+            }
+
+            const data = await response.json();
+            console.log("data");
+            console.log(data)
+            return data;
+        } catch (error) {
+           
+            console.error('Error submitting shopping cart:', error);
+            throw error; 
+        }
     }
 );
+
 
 const initialState = {
     shoppingCart: [],
