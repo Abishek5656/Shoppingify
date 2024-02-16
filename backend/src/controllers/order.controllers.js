@@ -10,11 +10,6 @@ export const orderProduct = asyncHandler(async (req, res) => {
     throw new  ApiError(400, "All fields ar required");
   }
 
-
-  console.log("shoppingCart")
-  console.log(shoppingCart)
-
-
   const order = await Order.create({
     name,
     orderList:shoppingCart,

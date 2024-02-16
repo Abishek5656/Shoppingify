@@ -6,9 +6,6 @@ export const submitShoppingCart = createAsyncThunk(
     "shoppingCart/orderDetails",
     async (orderDetails, thunkAPI) => {
         const state = thunkAPI.getState();
-        console.log("state.shoppingCart.shoppingCart");
-        console.log(state.shoppingCart.shoppingCart);
-
         try {
             
             const response = await fetch(`${BASE_URL}/orders/create-order`, {
