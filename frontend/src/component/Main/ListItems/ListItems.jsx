@@ -3,12 +3,15 @@ import { IoIosAdd } from "react-icons/io";
 import "./listitems.css";
 
 import { addItemToCart } from "../../../store/slice/shoppingSlice.js";
+import { addtoCart } from "../../../store/slice/orderSlice.js";
+
 import { useDispatch } from "react-redux";
 
 const ListItems = ({ items }) => {
     const dispatch = useDispatch();
 
     const handleAddToCart = async (item) => {
+        dispatch(addtoCart(item))
         dispatch(addItemToCart(item));
     };
 

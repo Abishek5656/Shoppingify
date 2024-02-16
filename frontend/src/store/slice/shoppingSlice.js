@@ -1,35 +1,35 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { BASE_URL } from "../../constant/data.js";
+// import { createAsyncThunk } from "@reduxjs/toolkit";
+// import { BASE_URL } from "../../constant/data.js";
 
-export const submitShoppingCart = createAsyncThunk(
-    "shoppingCart/orderDetails",
-    async (orderDetails, thunkAPI) => {
-        const state = thunkAPI.getState();
-        try {
-            const response = await fetch(`${BASE_URL}/orders/create-order`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    shoppingCart: state.shoppingCart.shoppingCart,
-                    name: "abishek",
-                }),
-            });
+// export const submitShoppingCart = createAsyncThunk(
+//     "shoppingCart/orderDetails",
+//     async (orderDetails, thunkAPI) => {
+//         const state = thunkAPI.getState();
+//         // try {
+//         //     const response = await fetch(`${BASE_URL}/orders/create-order`, {
+//         //         method: "POST",
+//         //         headers: {
+//         //             "Content-Type": "application/json",
+//         //         },
+//         //         body: JSON.stringify({
+//         //             shoppingCart: state.shoppingCart.shoppingCart,
+//         //             name: "shilpi",
+//         //         }),
+//         //     });
 
-            if (!response.ok) {
-                throw new Error("Failed to submit shopping cart");
-            }
+//         //     if (!response.ok) {
+//         //         throw new Error("Failed to submit shopping cart");
+//         //     }
 
-            const data = await response.json();
-            return data;
-        } catch (error) {
-            console.error("Error submitting shopping cart:", error);
-            throw error;
-        }
-    }
-);
+//         //     const data = await response.json();
+//         //     return data;
+//         // } catch (error) {
+//         //     console.error("Error submitting shopping cart:", error);
+//         //     throw error;
+//         // }
+//     }
+// );
 
 const initialState = {
     shoppingCart: [],
@@ -123,22 +123,22 @@ const shoppingCartSlice = createSlice({
             state.shoppingCart = [];
         },
     },
-    extraReducers: (builder) => {
-        builder
-            .addCase(submitShoppingCart.pending, (state, action) => {
-                state.loading = true;
-                state.error = null;
-            })
-            .addCase(submitShoppingCart.fulfilled, (state, action) => {
-                const { name } = action.payload;
-        state.loading = false;
-        state.name = name;
-            })
-            .addCase(submitShoppingCart.rejected, (state, action) => {
-                state.loading = false;
-                state.error = action.error.message;
-            });
-    },
+    // extraReducers: (builder) => {
+    //     builder
+    //         .addCase(submitShoppingCart.pending, (state, action) => {
+    //             state.loading = true;
+    //             state.error = null;
+    //         })
+    //         .addCase(submitShoppingCart.fulfilled, (state, action) => {
+    //             const { name } = action.payload;
+    //     state.loading = false;
+    //     state.name = name;
+    //         })
+    //         .addCase(submitShoppingCart.rejected, (state, action) => {
+    //             state.loading = false;
+    //             state.error = action.error.message;
+    //         });
+    // },
 });
 
 export const selectAllShoppingCart = (state) => state.shoppingCart.shoppingCart;

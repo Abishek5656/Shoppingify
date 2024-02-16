@@ -5,8 +5,9 @@ import { MdEdit } from "react-icons/md";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { submitShoppingCart } from "../../store/slice/shoppingSlice.js";
+import { submitShoppingCart, emptyItem } from "../../store/slice/orderSlice.js";
 import { emptyItemList } from "../../store/slice/shoppingSlice.js";
+
 import { toast } from "react-toastify";
 
 const ListManger = ({ openForm, setOpenForm }) => {
@@ -19,11 +20,13 @@ const ListManger = ({ openForm, setOpenForm }) => {
     const handleSubmit = () => {
         dispatch(submitShoppingCart(name));
         dispatch(emptyItemList());
+        dispatch(emptyItem())
+       setSave(false)
         toast.success("Order Placed");
     };
 
     const handleSave = () => {
-        setCompleted(true);
+        setCompleted(!completed);
         setSave(true);
     };
 

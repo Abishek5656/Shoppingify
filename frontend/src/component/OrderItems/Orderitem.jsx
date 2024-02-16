@@ -9,6 +9,8 @@ import {
     removeItemFromCart,
 } from "../../store/slice/shoppingSlice.js";
 
+import {incrementCount,  decrementCount, removeitem} from "../../store/slice/orderSlice.js";
+
 import { useDispatch } from "react-redux";
 
 const Orderitem = ({ productData }) => {
@@ -16,14 +18,19 @@ const Orderitem = ({ productData }) => {
 
     const handleDecrement = (orderItem) => {
         dispatch(decrementItem(orderItem));
+        dispatch(decrementCount(orderItem))
     };
 
     const handleIncrement = (orderItem) => {
+        console.log("orderItem inside the orderitem")
         dispatch(incrementItem(orderItem));
+        dispatch(incrementCount(orderItem))
     };
 
     const handleRemove = (orderItem) => {
+        dispatch(removeitem(orderItem));
         dispatch(removeItemFromCart(orderItem));
+
     };
 
     return (
