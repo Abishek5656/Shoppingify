@@ -15,9 +15,6 @@ export const orderProduct = asyncHandler(async (req, res) => {
     orderList:shoppingCart,
   });
 
-  console.log("order")
-  console.log(order)
-
   if (!order) {
     throw new  ApiError(400, "something went wrong while creating the order");
   }

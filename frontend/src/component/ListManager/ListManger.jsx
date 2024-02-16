@@ -5,11 +5,11 @@ import { MdEdit } from "react-icons/md";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { submitShoppingCart } from "../../store/slice/shoppingSlice.js"
-import {emptyItemList} from "../../store/slice/shoppingSlice.js";
+import { submitShoppingCart } from "../../store/slice/shoppingSlice.js";
+import { emptyItemList } from "../../store/slice/shoppingSlice.js";
+import { toast } from "react-toastify";
 
 const ListManger = ({ openForm, setOpenForm }) => {
-
     const dispatch = useDispatch();
 
     const [name, setName] = useState("");
@@ -19,6 +19,7 @@ const ListManger = ({ openForm, setOpenForm }) => {
     const handleSubmit = () => {
         console.log("complete");
         dispatch(submitShoppingCart());
+        toast.success("Order Placed");
     };
 
     const handleSave = () => {
@@ -27,8 +28,8 @@ const ListManger = ({ openForm, setOpenForm }) => {
     };
 
     const handleClear = () => {
-        dispatch(emptyItemList())
-    }
+        dispatch(emptyItemList());
+    };
 
     return (
         <div className="listmanager_container">
@@ -53,7 +54,12 @@ const ListManger = ({ openForm, setOpenForm }) => {
                 <div className={save ? "" : "div"}>
                     {save ? (
                         <div className="div2">
-                            <button className="cancel_btn" onClick={handleClear}>Cancel</button>
+                            <button
+                                className="cancel_btn"
+                                onClick={handleClear}
+                            >
+                                Cancel
+                            </button>
                             <button
                                 className="complete_btn"
                                 onClick={handleSubmit}

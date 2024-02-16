@@ -21,11 +21,8 @@ export const submitShoppingCart = createAsyncThunk(
             }
 
             const data = await response.json();
-            console.log("data");
-            console.log(data)
             return data;
         } catch (error) {
-           
             console.error('Error submitting shopping cart:', error);
             throw error; 
         }
