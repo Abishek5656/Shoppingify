@@ -17,8 +17,7 @@ const ListManger = ({ openForm, setOpenForm }) => {
     const [completed, setCompleted] = useState(false);
 
     const handleSubmit = () => {
-        console.log("complete");
-        dispatch(submitShoppingCart());
+        dispatch(submitShoppingCart(name));
         toast.success("Order Placed");
     };
 

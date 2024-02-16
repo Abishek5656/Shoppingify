@@ -7,33 +7,35 @@ export const submitShoppingCart = createAsyncThunk(
     async (orderDetails, thunkAPI) => {
         const state = thunkAPI.getState();
         try {
-            
             const response = await fetch(`${BASE_URL}/orders/create-order`, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json" 
+                    "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ shoppingCart: state.shoppingCart.shoppingCart, name:"shilpi" }) // Convert your body object to a JSON string
+                body: JSON.stringify({
+                    shoppingCart: state.shoppingCart.shoppingCart,
+                    name: "abishek",
+                }),
             });
 
             if (!response.ok) {
-                throw new Error('Failed to submit shopping cart');
+                throw new Error("Failed to submit shopping cart");
             }
 
             const data = await response.json();
             return data;
         } catch (error) {
-            console.error('Error submitting shopping cart:', error);
-            throw error; 
+            console.error("Error submitting shopping cart:", error);
+            throw error;
         }
     }
 );
-
 
 const initialState = {
     shoppingCart: [],
     loading: false,
     error: null,
+    name: null,
 };
 
 const shoppingCartSlice = createSlice({
@@ -128,7 +130,9 @@ const shoppingCartSlice = createSlice({
                 state.error = null;
             })
             .addCase(submitShoppingCart.fulfilled, (state, action) => {
-                state.loading = false;
+                const { name } = action.payload;
+        state.loading = false;
+        state.name = name;
             })
             .addCase(submitShoppingCart.rejected, (state, action) => {
                 state.loading = false;
