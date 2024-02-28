@@ -56,60 +56,18 @@ export const listOfProduct = [
     },
 ];
 
-export const topItems = [
-    {
-        items_name: "Banana",
-        percentage: 12,
-    },
-    {
-        items_name: "Chicken",
-        percentage: 12,
-    },
-    {
-        items_name: "Eggs",
-        percentage: 12,
-    },
-];
-
 export const topCategory = [
     {
-        items_name: "Fruits and Vegetales",
+        item_name: "Fruits and Vegetales",
         percentage: 12,
     },
     {
-        items_name: "Meat and Fish",
+        item_name: "Meat and Fish",
         percentage: 12,
     },
     {
-        items_name: "Pets",
+        item_name: "Pets",
         percentage: 12,
     },
 ];
 
-export const shoppingList = [
-    {
-        category_name: "Fruits and vegetables",
-        category_id: "1eqewfzfew",
-        orderList: [
-            {
-                item_name: "Apple",
-                item_id: "dafa1",
-                category_id: "1eqewfzfew",
-                quantity: 1,
-            },
-        ],
-    },
-    {
-        category_name: "Meat and Fish",
-        category_id: "qwwr32444",
-        orderList: [
-            {
-                item_name: "chicken1",
-                item_id: "dafa12",
-                category_id: "qwwr32444",
-                quantity: 1,
-            },
-
-        ],
-    },
-];

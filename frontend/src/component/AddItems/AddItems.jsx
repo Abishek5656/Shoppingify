@@ -20,7 +20,7 @@ const AddItems = ({ openForm, setOpenForm }) => {
                 body: JSON.stringify(productDetails),
             });
             const data = await res.json();
-            console.log(data);
+          
         } catch (error) {
             console.log(error);
         }

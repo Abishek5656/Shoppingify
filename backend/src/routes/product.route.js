@@ -3,7 +3,8 @@ import {
   // productCreated,
   allProducts,
   allCategoryList,
-  CreateProduct
+  CreateProduct,
+  topItems
 } from "../controllers/product.controllers.js";
 
 const router = Router();
@@ -24,5 +25,9 @@ router.route("/menu").get(allProducts);
 router.route("/categorey").get(allCategoryList)
 
 //router.route("/product/:catergoryId/:productId").get(singleProduct)
+
+
+router.route("/topItems").get(topItems)
+
 
 export default router;

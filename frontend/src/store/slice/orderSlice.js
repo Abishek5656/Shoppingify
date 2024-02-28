@@ -4,7 +4,7 @@ import { BASE_URL } from "../../constant/data";
 
 const initialState = {
     orderItem: [],
-    name: "abi",
+    name,
 };
 
 export const submitShoppingCart = createAsyncThunk(
@@ -21,7 +21,7 @@ export const submitShoppingCart = createAsyncThunk(
                 },
                 body: JSON.stringify({
                     shoppingCart: state.order.orderItem,
-                    name: "shilpi",
+                    name: "lakshmi",
                 }),
             });
 

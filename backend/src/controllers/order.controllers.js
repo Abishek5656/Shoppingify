@@ -2,7 +2,6 @@ import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { Order } from "../models/oder.model.js";
-import { Sales } from "../models/sales.model.js";
 
 export const orderProduct = asyncHandler(async (req, res) => {
   const { name, shoppingCart } = req.body;
