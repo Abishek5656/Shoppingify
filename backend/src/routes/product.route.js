@@ -4,7 +4,8 @@ import {
   allProducts,
   allCategoryList,
   CreateProduct,
-  topItems
+  topItems,
+  topCategory
 } from "../controllers/product.controllers.js";
 
 const router = Router();
@@ -28,6 +29,10 @@ router.route("/categorey").get(allCategoryList)
 
 
 router.route("/topItems").get(topItems)
+
+router.route("/topCategory").get(topCategory)
+
+
 
 
 export default router;

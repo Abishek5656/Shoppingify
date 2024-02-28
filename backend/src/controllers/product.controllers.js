@@ -120,3 +120,7 @@ export const topItems = asyncHandler(async (req, res) => {
   return res.status(200).json(new ApiResponse(200, itemsWithPercentage, "Top items with percentage of total sales"));
 });
 
+
+export const topCategory = asyncHandler(async (req, res) => {
+  
+})
