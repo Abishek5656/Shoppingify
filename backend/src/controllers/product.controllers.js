@@ -9,7 +9,6 @@ import { Order } from "../models/oder.model.js";
 export const CreateProduct = asyncHandler(async (req, res) => {
   const { name, url, note, categoryName } = req.body;
 
-  // Check if any of the required fields are empty or contain only whitespace
   if ([name, url, note, categoryName].some((field) => field?.trim() === "")) {
     throw new ApiError(400, "All fields are required");
   }
@@ -122,5 +121,5 @@ export const topItems = asyncHandler(async (req, res) => {
 
 
 export const topCategory = asyncHandler(async (req, res) => {
-  
+
 })
