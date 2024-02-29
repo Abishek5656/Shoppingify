@@ -1,6 +1,4 @@
 import "./statistics.css";
-// import { topItems } from "../../constant/data";
-// import { topCategory } from "../../constant/data";
 import CommonChart from "../CommonChart/CommonChart";
 import { BASE_URL } from "../../constant/data.js";
 
@@ -8,7 +6,7 @@ import { BASE_URL } from "../../constant/data.js";
 import { useEffect, useState } from "react";
 const Statistics = () => {
     const [topItems, setTopItems] = useState(null);
-    const [topCategory,settopCategory] = useState(null)
+    const [topCategory, settopCategory] = useState(null);
 
     const fetchTopItems = async () => {
         const res = await fetch(`${BASE_URL}/product/topItems`);
@@ -19,13 +17,12 @@ const Statistics = () => {
     const fetchTopCategory = async () => {
         const res = await fetch(`${BASE_URL}/product/topCategory`);
         const data = await res.json();
-       settopCategory(data.data)
+        settopCategory(data.data);
     };
 
     useEffect(() => {
         fetchTopItems();
-        fetchTopCategory ();
-
+        fetchTopCategory();
     }, []);
     return (
         <div className="statistics_container">
