@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "./routes/index";
 // Lazy-loaded components
-// const Layout = React.lazy(() => import("./Layout/Layout"));
 const Menu = React.lazy(() => import("./component/Main/Menu/Menu"));
 const History = React.lazy(() => import("./component/history/History"));
 const Statistics = React.lazy(() => import("./component/Statistics/Statistics"));
