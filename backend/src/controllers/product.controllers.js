@@ -143,27 +143,47 @@ export const topItems = asyncHandler(async (req, res) => {
     );
 });
 
+
+
 export const topCategory = asyncHandler(async (req, res) => {
-  const topCategory = await Order.aggregate([
+  const topCategory = await Order.aggregate
+  ([
     { $unwind: "$orderList" },
     {
       $group: {
         _id: {
           itemCategoryId: "$orderList.item_categoryId",
-          itemCategory: "$orderList.item_category",
+          itemCategory: "$orderList.item_category"
         },
-        categoryCount: { $sum: 1 },
-      },
+        categoryCount: { $sum: 1 }
+      }
     },
     {
+      $group: {
+        _id: null,
+        totalOrders: { $sum: "$categoryCount" },
+        categories: {
+          $push: {
+            itemCategoryId: "$_id.itemCategoryId",
+            itemCategoryName: "$_id.itemCategory",
+            categoryCount: "$categoryCount"
+          }
+        }
+      }
+    },
+    { $unwind: "$categories" },
+    {
       $project: {
-        itemCategoryId: "$_id.itemCategoryId",
-        itemCategoryName: "$_id.itemCategory",
-        categoryCount: 1,
         _id: 0,
-      },
+        itemCategoryId: "$categories.itemCategoryId",
+        itemCategoryName: "$categories.itemCategoryName",
+        categoryCount: "$categories.categoryCount",
+        percentage: { $multiply: [{ $divide: ["$categories.categoryCount", "$totalOrders"] }, 100] }
+      }
     },
     { $sort: { categoryCount: -1 } },
-    { $limit: 3 },
-  ]);
-});
+    { $limit: 3 }
+  ])
+
+ return res.status(200).json(new ApiResponse(200, topCategory, "Top 3 categories retrieved successfully."))
+})
