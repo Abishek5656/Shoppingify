@@ -41,21 +41,6 @@ const History = () => {
                 <h4>July 2020 2020</h4>
 
                 <div className="card">
-                    <h5>Board game week 2</h5>
-
-                    <div className="card_container">
-                        <div className="calendar_container">
-                            <PiCalendar size={20} color="#C1C1C4" />
-                            <span>Mon 27.7.2020</span>
-                        </div>
-                        <button className="completedbtn">completed</button>
-                        <RiArrowRightSLine size={26} color="#F9A109"/>
-                    </div>
-
-
-                </div>
-
-                <div className="card">
                     <h5>Grocery List</h5>
 
                     <div className="card_container">
