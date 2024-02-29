@@ -2,9 +2,6 @@ import "./commonchart.css";
 import PropTypes from "prop-types";
 
 const CommonChart = ({ data, name }) => {
-    console.log("in the common chart");
-    console.log(data);
-
     return (
         <div className="common_container">
             <h4 className="common_title">{name}</h4>
