@@ -119,7 +119,7 @@ export const topItems = asyncHandler(async (req, res) => {
       $project: {
         _id: 0,
         item_id: "$_id.item_id",
-        item_name: "$_id.item_name",
+        item: "$_id.item_name",
         itemCount: 1,
       },
     },
@@ -176,7 +176,7 @@ export const topCategory = asyncHandler(async (req, res) => {
       $project: {
         _id: 0,
         itemCategoryId: "$categories.itemCategoryId",
-        itemCategoryName: "$categories.itemCategoryName",
+        item: "$categories.itemCategoryName",
         categoryCount: "$categories.categoryCount",
         percentage: { $multiply: [{ $divide: ["$categories.categoryCount", "$totalOrders"] }, 100] }
       }
